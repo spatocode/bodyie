@@ -1,5 +1,5 @@
 """
-ASGI config for bodystats project.
+ASGI config for bodyie project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bodystats.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bodyie.settings')
 
 application = get_asgi_application()

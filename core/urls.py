@@ -1,7 +1,6 @@
 from django.urls import path
-from core.views import WaistAPIView, BodyStatsAPIView
+from core.views import MeasurementAPIView
 
 urlpatterns = [
-    path('waist', WaistAPIView.as_view(), name='waist'),
-    path('bodystats', BodyStatsAPIView.as_view(), name='bodystats'),
+    path('measurement', MeasurementAPIView.as_view(), name='measurement'),
 ]
