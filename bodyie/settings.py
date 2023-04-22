@@ -26,10 +26,10 @@ if os.path.exists(dotenv):
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-x$u-f44-xq&-3jc-&tvtjg^5@sd3pv#sqi4%2a_-#$nys3%y$m'
+SECRET_KEY = os.environ.get("SECRET_KEY") or 'django-insecure-x$u-f44-xq&-3jc-&tvtjg^5@sd3pv#sqi4%2a_-#$nys3%y$m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.environ.get("DEBUG", 0))
 
 ALLOWED_HOSTS = []
 
