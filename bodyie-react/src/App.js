@@ -25,7 +25,7 @@ function Measurement({ measurementData=[], setMeasurementData=f=>f }) {
     })
     .then(json => {
       toast.success("Recorded successfuly")
-      // setMeasurementData([])
+      setMeasurementData([])
     })
     .catch(err => {
       console.error(err)
