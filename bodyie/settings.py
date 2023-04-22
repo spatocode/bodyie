@@ -10,11 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+root = environ.Path(__file__) - 2
+dotenv = root(os.environ.get('dotenv', '.env'))
+if os.path.exists(dotenv):
+    environ.Env.read_env(dotenv)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -82,8 +88,12 @@ CORS_ALLOWED_ORIGINS = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "ENGINE": os.environ.get("RDS_ENGINE", "django.db.backends.postgresql"),
+        "NAME": os.environ.get("RDS_DATABASE", "predishun"),
+        "USER": os.environ.get("RDS_USER", "postgres"),
+        "PASSWORD": os.environ.get("RDS_PASSWORD", "postgres"),
+        "HOST": os.environ.get("RDS_HOST", "localhost"),
+        "PORT": os.environ.get("RDS_PORT", "5432"),
     }
 }
 
